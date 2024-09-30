@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shopping_graph"
+    app:startDestination="@id/homeFragment3">
+
+    <fragment
+        android:id="@+id/homeFragment3"
+        android:name="com.smartherd.kini.fragment.Shopping.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment3_to_searchFragment2"
+            app:destination="@id/searchFragment2" />
+        <action
+            android:id="@+id/action_homeFragment3_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="com.smartherd.kini.fragment.Shopping.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment2_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment2"
+        android:name="com.smartherd.kini.fragment.Shopping.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment2_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_cartFragment2_to_billingFragment"
+            app:destination="@id/billingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.smartherd.kini.fragment.Shopping.ProductDetailFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail" >
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="com.smartherd.kini.fragment.Shopping.BillingFragment"
+        android:label="fragment_billing"
+        tools:layout="@layout/fragment_billing" />
+</navigation>
