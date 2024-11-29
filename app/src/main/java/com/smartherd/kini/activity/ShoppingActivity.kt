@@ -2,22 +2,14 @@ package com.smartherd.kini.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.smartherd.kini.R
 import com.smartherd.kini.databinding.ActivityShoppingBinding
+import com.smartherd.kini.fragment.PrehomeFragment
 import com.smartherd.kini.fragment.Shopping.CartFragment
+import com.smartherd.kini.fragment.Shopping.HomeFragment
 import com.smartherd.kini.fragment.Shopping.ProfileFragment
 import com.smartherd.kini.fragment.Shopping.SearchFragment
-import com.smartherd.kini.fragment.loginRegister.HomeFragment
-
 
 
 class ShoppingActivity : AppCompatActivity() {
@@ -29,7 +21,7 @@ class ShoppingActivity : AppCompatActivity() {
         binding = ActivityShoppingBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        replacefragment(HomeFragment())
+        replacefragment(PrehomeFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){

@@ -82,4 +82,6 @@ dependencies {
     implementation ("com.google.firebase:firebase-firestore:25.1.0")
     implementation("com.google.firebase:firebase-database")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("androidx.viewpager2:viewpager2:1.1.0")
+
 }

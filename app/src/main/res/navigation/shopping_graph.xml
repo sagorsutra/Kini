@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment3"
         android:name="com.smartherd.kini.fragment.Shopping.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_prehome" >
         <action
             android:id="@+id/action_homeFragment3_to_searchFragment2"
             app:destination="@id/searchFragment2" />
