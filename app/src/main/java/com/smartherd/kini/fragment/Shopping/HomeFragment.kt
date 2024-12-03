@@ -29,11 +29,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
         // Initialize views
         tabLayout = view.findViewById(R.id.tabLayout)
         viewPager = view.findViewById(R.id.viewpagerHome)
-
         return view
     }
 //    override fun onResume() {
@@ -42,7 +40,6 @@ class HomeFragment : Fragment() {
 //    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // Fetch categories once the view is created
         fetchCategoriesFromFirebase()
     }
@@ -64,7 +61,6 @@ class HomeFragment : Fragment() {
                         categoriesMap.getOrPut(mainCategory) { mutableListOf() }.add(product) // Group products under the main category
                     }
                 }
-
                 categoryList.addAll(categoriesMap.keys) // Add main categories to the list
                 categoryList.sort() // Optional: Sort alphabetically
 
@@ -72,7 +68,6 @@ class HomeFragment : Fragment() {
                     setupTabLayoutAndViewPager(categoriesMap)
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Log.e("FirebaseError", "Error fetching categories: ${error.message}")
             }
@@ -84,7 +79,6 @@ class HomeFragment : Fragment() {
         val fragments = categoryList.map { mainCategory ->
             ProductListFragment.newInstance(mainCategory, ArrayList(categoriesMap[mainCategory] ?: emptyList()))
         }
-
         categoryAdapter = CategoryPagerAdapter(fragments, requireActivity())
         viewPager.adapter = categoryAdapter
 

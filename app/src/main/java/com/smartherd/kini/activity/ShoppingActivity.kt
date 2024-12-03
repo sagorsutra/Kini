@@ -29,12 +29,10 @@ class ShoppingActivity : AppCompatActivity() {
                 R.id.searchFragment ->replacefragment(SearchFragment())
                 R.id.cartFragment ->replacefragment(CartFragment())
                 R.id.profileFragment ->replacefragment(ProfileFragment())
-
             }
             true
         }
-
-        }
+    }
 
     private fun replacefragment(fragment: Fragment){
         val fragmentManager = supportFragmentManager

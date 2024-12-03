@@ -49,8 +49,16 @@ class RegisterFragment : Fragment() {
             val email = binding.edEmailRegister.text.toString().trim()
             val password = binding.edPasswordRegister.text.toString().trim()
 
-            registerUser(firstName,lastName,email,password)
 
+            if (firstName.isNotEmpty() && lastName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+                registerUser(firstName, lastName, email, password)
+            } else {
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+        binding.tvDoYouHaveAccount.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }
 
@@ -64,36 +72,56 @@ class RegisterFragment : Fragment() {
                     val userId = user?.uid
 
                     if (userId != null) {
+                        // Save user data to Firestore
                         saveUserToFirestore(userId, firstName, lastName, email)
                     }
                 } else {
                     Log.w("RegisterFragment", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(requireContext(), "Registration failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Registration failed. Please check your input.", Toast.LENGTH_SHORT).show()
                 }
             }
-
-
-}
+    }
 
     private fun saveUserToFirestore(userId: String, firstName: String, lastName: String, email: String) {
-        // Create a user object
+        // Create a user object with additional data
         val user = hashMapOf(
             "firstName" to firstName,
             "lastName" to lastName,
             "email" to email
         )
 
-        // Save user to Firestore
+        // Save user data to Firestore
         firestore.collection("users").document(userId)
             .set(user)
             .addOnSuccessListener {
                 Log.d("RegisterFragment", "User data saved to Firestore")
-                Toast.makeText(requireContext(), "Registration successful!", Toast.LENGTH_SHORT).show()
-                updateUI()
+
+                // Initialize user data (cart and orders)
+                initializeUserData(userId)
+
             }
             .addOnFailureListener { e ->
                 Log.w("RegisterFragment", "Error saving user data", e)
                 Toast.makeText(requireContext(), "Failed to save user data.", Toast.LENGTH_SHORT).show()
+            }
+    }
+    private fun initializeUserData(userId: String) {
+        // Initialize user data (empty cart and orders)
+        val defaultUserData = hashMapOf(
+            "cart" to hashMapOf<String, Int>(),  // Empty cart initially
+            "orders" to listOf<String>(),        // Empty orders initially
+        )
+
+        // Save default user data to Firestore
+        firestore.collection("users").document(userId)
+            .update(defaultUserData)
+            .addOnSuccessListener {
+                Log.d("RegisterFragment", "User data initialized")
+                updateUI()
+            }
+            .addOnFailureListener { e ->
+                Log.w("RegisterFragment", "Error initializing user data", e)
+                Toast.makeText(requireContext(), "Failed to initialize user data.", Toast.LENGTH_SHORT).show()
             }
     }
 

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.smartherd.kini.R
 import com.smartherd.kini.activity.ShoppingActivity
 import com.smartherd.kini.databinding.FragmentLoginBinding
@@ -74,12 +75,54 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     Log.d("LoginFragment", "signInWithEmail:success")
                     val user = auth.currentUser
-                    updateUI()
+                    user?.let {
+                        // After successful login, fetch user data from Firestore
+                        fetchUserData(it.uid)
+                    }
                 } else {
                     Log.w("LoginFragment", "signInWithEmail:failure", task.exception)
                     Toast.makeText(requireContext(), "Authentication failed. Check your email and password.", Toast.LENGTH_SHORT).show()
                     updateUI()
                 }
+            }
+    }
+
+    private fun fetchUserData(userId: String) {
+        val db = FirebaseFirestore.getInstance()
+        val userRef = db.collection("users").document(userId)
+
+        userRef.get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    // User data exists, proceed to the main app
+                    updateUI()
+                } else {
+                    // User data doesn't exist, initialize it with default values
+                    initializeUserData(userId)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("LoginFragment", "Error getting user data: ", exception)
+            }
+    }
+
+    private fun initializeUserData(userId: String) {
+        val db = FirebaseFirestore.getInstance()
+        val userRef = db.collection("users").document(userId)
+
+        val defaultUserData = hashMapOf(
+            "cart" to hashMapOf<String, Int>(),  // Empty cart initially
+            "orders" to listOf<String>(),        // Empty orders list
+        )
+
+        userRef.set(defaultUserData)
+            .addOnSuccessListener {
+                Log.d("LoginFragment", "User data initialized")
+                updateUI()
+            }
+            .addOnFailureListener { e ->
+                Log.w("LoginFragment", "Error initializing user data", e)
+                Toast.makeText(requireContext(), "Failed to initialize user data.", Toast.LENGTH_SHORT).show()
             }
     }
 
