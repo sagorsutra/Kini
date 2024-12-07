@@ -45,6 +45,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -83,5 +84,6 @@ dependencies {
     implementation("com.google.firebase:firebase-database")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("androidx.viewpager2:viewpager2:1.1.0")
+
 
 }

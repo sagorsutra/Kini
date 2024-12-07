@@ -17,6 +17,7 @@ import com.smartherd.kini.R
 import com.smartherd.kini.adapter.CategoryPagerAdapter
 import com.smartherd.kini.data.Product
 
+
 class HomeFragment : Fragment() {
 
     private lateinit var tabLayout: TabLayout
