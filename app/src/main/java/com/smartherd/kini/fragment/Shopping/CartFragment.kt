@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.getValue
+import com.smartherd.kini.R
 import com.smartherd.kini.adapter.CartAdapter
 import com.smartherd.kini.data.CartProduct
 import com.smartherd.kini.databinding.FragmentCartBinding
@@ -44,6 +45,14 @@ class CartFragment : Fragment() {
 
         // Load cart data from Firebase
         loadCartDataFromFirebase()
+
+        binding.buttonCheckout.setOnClickListener {
+            val billingFragment = BillingFragment()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.frame_layout, billingFragment) // Replace with your container ID
+                .addToBackStack(null) // Optional: Add this transaction to the back stack
+                .commit()
+        }
 
         return binding.root
     }
@@ -98,6 +107,8 @@ class CartFragment : Fragment() {
         val totalPrice = cartItems.sumOf { it.price.toInt() * it.quantity }
         binding.tvTotalPrice.text = "$$totalPrice"
     }
+
+
 }
 
 

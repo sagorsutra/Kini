@@ -1,10 +1,10 @@
 package com.smartherd.kini.data
 
 data class CartProduct(
-    var id: String = "",       // Default empty string for Firebase
-    var name: String = "",     // Default empty string for Firebase
-    var price: String = "",    // Default empty string for Firebase
-    var quantity: Int = 0,     // Default zero for Firebase
-    var imageUrl: String = ""  // Default empty string for Firebase
+    val id: String = "",          // ID won't change once set
+    val name: String = "",        // Name remains constant
+    val price: String = "",       // Price remains constant
+    var quantity: Int = 0,        // Quantity can change as the user modifies the cart
+    val imageUrl: String = ""     // Image URL stays constant
 )
 
