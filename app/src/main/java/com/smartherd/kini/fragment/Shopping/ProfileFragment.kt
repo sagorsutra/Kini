@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.smartherd.kini.R
@@ -68,11 +69,21 @@ class ProfileFragment : Fragment() {
             Log.d("HomeFragment", "User not logged in")
             Toast.makeText(requireContext(), "User not logged in", Toast.LENGTH_SHORT).show()
         }
+        binding.tvAllOrders.setOnClickListener {
+            navigateToOrders()
+        }
 
         binding.logout.setOnClickListener {
             logoutUser()
         }
 
+    }
+
+    private fun navigateToOrders() {
+        val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, OrderFragment()) // Replace with your container ID
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
     private fun logoutUser() {
         // Sign out the user
