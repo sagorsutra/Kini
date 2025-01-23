@@ -51,3 +51,10 @@ Kini
 │   └── slider_item.xml          # Layout for the event slider
 │
 └── MainActivity.kt              # The main entry point of the app
+
+## How It Works 🛠
+### 1. Fetching Categories
+Categories are retrieved from the Categories node in Firebase and displayed as tabs in the TabLayout.
+### 2. Fetching Products
+Products are fetched from the Products node in Firebase.
+Special products with the offerCategory field set to Special Product are displayed in the Home category.
