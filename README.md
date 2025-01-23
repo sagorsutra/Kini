@@ -26,6 +26,7 @@
 ---
 
 ## Project Structure 🗂
+ (```)
 Kini
 │
 ├── adapter/                     # Adapters for RecyclerView and ViewPager2
