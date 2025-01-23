@@ -26,4 +26,4 @@
 ---
 
 ## Project Structure 🗂
-
+Kini │ ├── adapter/ # Adapters for RecyclerView and ViewPager2 │ ├── CategoryAdapter.kt # Adapter for product categories │ ├── ProductAdapter.kt # Adapter for products │ └── SliderAdapter.kt # Adapter for the event slider │ ├── fragment/Shopping/ # Fragments for shopping features │ ├── HomeFragment.kt # Main fragment for the home screen │ └── CategoryFragment.kt # Fragment for specific category products │ ├── model/ # Data models │ ├── Category.kt # Model for categories │ ├── Product.kt # Model for products │ └── Event.kt # Model for event images │ ├── utils/ # Utility functions and constants │ └── FirebaseUtils.kt # Firebase-related helper functions │ ├── res/layout/ # XML layouts for activities and fragments │ ├── fragment_home.xml # Layout for the home fragment │ ├── category_item.xml # Layout for category items │ └── slider_item.xml # Layout for the event slider │ └── MainActivity.kt # T
