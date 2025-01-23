@@ -52,6 +52,14 @@ Kini
 │
 └── MainActivity.kt              # The main entry point of the app
 
+##Technologies Used 🛠
+##Kotlin: Programming language.
+##Firebase Realtime Database: Backend for real-time data fetching.
+##ViewPager2: For event image slider.
+##RecyclerView: For displaying categories and products.
+##Glide: For image loading and caching.
+##Material Components: For UI design.
+
 ## How It Works 🛠
 ### 1. Fetching Categories
 Categories are retrieved from the Categories node in Firebase and displayed as tabs in the TabLayout.
