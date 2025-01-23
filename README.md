@@ -26,7 +26,7 @@
 ---
 
 ## Project Structure 🗂
- (```)
+(```)**
 Kini
 │
 ├── adapter/                     # Adapters for RecyclerView and ViewPager2
@@ -63,7 +63,7 @@ Kini
 │   ├── order_item.xml           # Layout for displaying orders
 │
 └── MainActivity.kt              # The main entry point of the app
-
+(```)**
 
 ## Technologies Used 🛠
 ### Kotlin: Programming language.
