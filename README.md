@@ -31,16 +31,25 @@ Kini
 ├── adapter/                     # Adapters for RecyclerView and ViewPager2
 │   ├── CategoryAdapter.kt       # Adapter for product categories
 │   ├── ProductAdapter.kt        # Adapter for products
-│   └── SliderAdapter.kt         # Adapter for the event slider
+│   ├── SliderAdapter.kt         # Adapter for the event slider
+│   ├── CartAdapter.kt           # Adapter for displaying cart items
+│   ├── OrderAdapter.kt          # Adapter for viewing order history
 │
 ├── fragment/Shopping/           # Fragments for shopping features
 │   ├── HomeFragment.kt          # Main fragment for the home screen
-│   └── CategoryFragment.kt      # Fragment for specific category products
+│   ├── CategoryFragment.kt      # Fragment for specific category products
+│   ├── CartFragment.kt          # Fragment for viewing cart items
+│   └── OrdersFragment.kt        # Fragment for viewing order history
+│
+├── fragment/Admin/              # Admin-specific features
+│   ├── AdminOrdersFragment.kt   # Admin interface to manage orders
 │
 ├── model/                       # Data models
 │   ├── Category.kt              # Model for categories
 │   ├── Product.kt               # Model for products
-│   └── Event.kt                 # Model for event images
+│   ├── Event.kt                 # Model for event images
+│   ├── CartItem.kt              # Model for cart items
+│   └── Order.kt                 # Model for orders
 │
 ├── utils/                       # Utility functions and constants
 │   └── FirebaseUtils.kt         # Firebase-related helper functions
@@ -48,9 +57,12 @@ Kini
 ├── res/layout/                  # XML layouts for activities and fragments
 │   ├── fragment_home.xml        # Layout for the home fragment
 │   ├── category_item.xml        # Layout for category items
-│   └── slider_item.xml          # Layout for the event slider
+│   ├── slider_item.xml          # Layout for the event slider
+│   ├── cart_item.xml            # Layout for cart items
+│   ├── order_item.xml           # Layout for displaying orders
 │
 └── MainActivity.kt              # The main entry point of the app
+
 
 ## Technologies Used 🛠
 ### Kotlin: Programming language.
